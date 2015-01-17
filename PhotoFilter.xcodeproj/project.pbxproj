@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E4846571A65CFC300297CED /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4846561A65CFC300297CED /* Thumbnail.swift */; };
 		4E628FAC1A647C2A00F7ABEF /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E628FAB1A647C2A00F7ABEF /* GalleryViewController.swift */; };
-		4E784E2D1A69CFB40011F80D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E784E2F1A69CFB40011F80D /* Localizable.strings */; };
+		4E7279C51A6B11D200FC8767 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E7279C71A6B11D200FC8767 /* Localizable.strings */; };
 		4E7C555B1A678374003A7A12 /* GalleryImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C555A1A678374003A7A12 /* GalleryImageCell.swift */; };
 		4EBA3F2C1A671E05001F1384 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F2B1A671E05001F1384 /* PhotoViewController.swift */; };
 		4EF245341A646410008D454A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF245331A646410008D454A /* AppDelegate.swift */; };
@@ -17,7 +17,6 @@
 		4EF2453B1A646410008D454A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2453A1A646410008D454A /* Images.xcassets */; };
 		4EF2453E1A646410008D454A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2453C1A646410008D454A /* LaunchScreen.xib */; };
 		4EF2454A1A646410008D454A /* PhotoFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF245491A646410008D454A /* PhotoFilterTests.swift */; };
-		4EF2455B1A646F3F008D454A /* keeshond.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2455A1A646F3F008D454A /* keeshond.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,10 +32,10 @@
 /* Begin PBXFileReference section */
 		4E4846561A65CFC300297CED /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		4E628FAB1A647C2A00F7ABEF /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		4E784E2E1A69CFB40011F80D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4E784E301A69CFC40011F80D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E7279C61A6B11D200FC8767 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E7279C81A6B11D500FC8767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E7279C91A6B11D700FC8767 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E784E321A69D0040011F80D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		4E784E331A69D0050011F80D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E7C555A1A678374003A7A12 /* GalleryImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryImageCell.swift; sourceTree = "<group>"; };
 		4EBA3F2B1A671E05001F1384 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		4EF2452E1A646410008D454A /* PhotoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +47,6 @@
 		4EF245431A646410008D454A /* PhotoFilterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFilterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF245481A646410008D454A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF245491A646410008D454A /* PhotoFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilterTests.swift; sourceTree = "<group>"; };
-		4EF2455A1A646F3F008D454A /* keeshond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keeshond.png; path = ../../../../Downloads/keeshond.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +100,7 @@
 		4EF245311A646410008D454A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4E784E2F1A69CFB40011F80D /* Localizable.strings */,
-				4EF2455A1A646F3F008D454A /* keeshond.png */,
+				4E7279C71A6B11D200FC8767 /* Localizable.strings */,
 				4EF245321A646410008D454A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -237,9 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF2453E1A646410008D454A /* LaunchScreen.xib in Resources */,
-				4E784E2D1A69CFB40011F80D /* Localizable.strings in Resources */,
+				4E7279C51A6B11D200FC8767 /* Localizable.strings in Resources */,
 				4EF2453B1A646410008D454A /* Images.xcassets in Resources */,
-				4EF2455B1A646F3F008D454A /* keeshond.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,12 +281,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4E784E2F1A69CFB40011F80D /* Localizable.strings */ = {
+		4E7279C71A6B11D200FC8767 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4E784E2E1A69CFB40011F80D /* Base */,
-				4E784E301A69CFC40011F80D /* en */,
-				4E784E331A69D0050011F80D /* id */,
+				4E7279C61A6B11D200FC8767 /* Base */,
+				4E7279C81A6B11D500FC8767 /* en */,
+				4E7279C91A6B11D700FC8767 /* id */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

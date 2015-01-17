@@ -30,25 +30,25 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   var delegate : ImageSelectedProtocol?
   var views : [String : AnyObject]?
   var selectedMainPhoto = UIImageView()
+  var dogDictionary = [Int : UIImage]()
   
   override func loadView() {
     
-    //add rootView and image
+    //mainImage
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
     let mainImageFile = UIImage(named: "street.jpeg")
     self.mainImage = UIImageView(image: mainImageFile!)
-    self.mainImage.contentMode = UIViewContentMode.ScaleAspectFill
-    
+    self.mainImage.contentMode = UIViewContentMode.ScaleToFill
     self.mainImage.setTranslatesAutoresizingMaskIntoConstraints(false)
     
-    //add button
+    //button
     self.photoButton.setTitle(NSLocalizedString("Photo", comment: "Button title"), forState: UIControlState.Normal)
     self.photoButton.backgroundColor = UIColor.blueColor()
     self.photoButton.setTranslatesAutoresizingMaskIntoConstraints(false)
     self.photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
     
-    //add collectionView
+    //collectionView
     let collectionViewFlowLayout = UICollectionViewFlowLayout()
     self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionViewFlowLayout)
     collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -59,24 +59,22 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     collectionView.delegate = self
     collectionView.registerClass(GalleryImageCell.self, forCellWithReuseIdentifier: "Filter_Cell")
     
-    //add all these to the views
+    //view setup
     let views = [ "photoButton" : photoButton, "mainImage" : mainImage, "collectionView" : collectionView]
     rootView.addSubview(mainImage)
     rootView.addSubview(collectionView)
     rootView.addSubview(photoButton)
     self.setupConstraintsOnRootView(rootView, forView: views)
+    self.view = rootView
+    self.navigationController?.delegate = self
     
-    
-    
+    //doubleTap set up
     self.mainImage.userInteractionEnabled = true
     let tapTapJoy = UITapGestureRecognizer(target: self, action: "doubleTapToFilter:")
     tapTapJoy.numberOfTapsRequired = 2
     self.mainImage.addGestureRecognizer(tapTapJoy)
     
     
-    self.view = rootView
-    self.navigationController?.delegate = self
-  
   }
   
   override func viewDidLoad() {
@@ -95,7 +93,6 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       self.alertController.addAction(cameraAction)
     }
     
-    
     //set up photo view collection
     let photoCollectionAction = UIAlertAction(title: NSLocalizedString("Photo", comment: "Photo view option within Photo's action sheet"), style: UIAlertActionStyle.Default) { (action) -> Void in
       let photoVC = PhotoViewController()
@@ -103,7 +100,6 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       self.navigationController?.pushViewController(photoVC, animated: true)
     }
     self.alertController.addAction(photoCollectionAction)
-    
     
     //set up gallery button
     let galleryAction = UIAlertAction(title: NSLocalizedString("Gallery", comment: "Gallery option within Photo's action sheet"), style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -129,19 +125,15 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     }
     self.alertController.addAction(filterAction)
     
-    
-    //set up dummy button
-    let dummyAction = UIAlertAction(title: NSLocalizedString("Dummy Button", comment: "Dummy option within Photo's action sheet"), style: UIAlertActionStyle.Destructive) { (action) -> Void in
-      func randRange(low: Int = 1, high: Int = 5) {
-        let rand = random()
-      }
-      self.mainImage.image = UIImage(named:"keeshond\(rand).jpg")
-      println("dummy action pushed")
+    //set up random dog image fetch
+    let dummyAction = UIAlertAction(title: NSLocalizedString("Click me!", comment: "Fetches a random Keeshond picture from Google Custom Search API"), style: UIAlertActionStyle.Default) { (action) -> Void in
+      self.fetchImage(1, completionHandler: { (selectedImage, errorString) -> () in
+      
+      })
     }
     self.alertController.addAction(dummyAction)
    
     let options = [kCIContextWorkingColorSpace : NSNull()]
-    //    let EAGLContext = EAGLContext( EAGLRenderingAPI.OpenGLES2)
     let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
     self.gpuContext = CIContext(EAGLContext: eaglContext, options: options)
     self.setupThumbnails()
@@ -272,10 +264,35 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     }
 
   
-  
-  func fetchImage(currentID : Int, completionHandler : ([UIImage]?, String?) -> ()) {
-    let requestURL = NSURL(string: "https://www.googleapis.com/customsearch/v1?key=YOUR_API_KEY&cx=YOUR_CSE_ID&q=keeshond&searchType=image&fileType=jpg&imgSize=small&alt=json")
-    let googleRequest =
+  func fetchImage(currentID : Int, completionHandler : (UIImage?, String?) -> ()) {
+    var randomNumber = Int(arc4random_uniform(10))
+    var selectedImage : UIImage
+    //image caching
+    if let a = dogDictionary[randomNumber] {
+      selectedImage = a
+      self.mainImage.image = selectedImage
+    }
+    else {
+    var url = NSURL(string: "https://www.googleapis.com/customsearch/v1?key=AIzaSyAsX5ObwMmRmaxyQDaDNLD0Y8GVwA5wxy0&cx=017633276240633998306:xb_qdycw1ds&q=keeshond&searchType=image")
+    var request = NSURLRequest(URL: url!)
+    let queue = NSOperationQueue()
+    NSURLConnection.sendAsynchronousRequest(request, queue: queue) { (request, response, error) -> Void in
+      var returnedData: [NSString: AnyObject] = NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions.allZeros, error: nil) as [NSString : AnyObject]
+      var dogInfo: [AnyObject] = returnedData["items"]! as [AnyObject]
+      var randomDog = dogInfo[randomNumber] as [NSString : AnyObject]
+      var randomLink = NSURL(string: randomDog["link"] as String)
+      var randomImageData = NSData(contentsOfURL: randomLink!)
+      var randomImage = UIImage(data: randomImageData!)
+      self.dogDictionary[randomNumber] = randomImage
+      NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+        completionHandler(randomImage, nil)
+        self.mainImage.image = randomImage!
+      })
+      }}
+    self.mainImageShrinkConstraintY.constant = 175
+    self.mainImageShrinkConstraint.constant = 175
+    UIView.animateWithDuration(0.4, animations: { () -> Void in
+      self.view.layoutIfNeeded()})
   }
   
   
@@ -296,8 +313,8 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   
   //MARK: Layout Constraints
   func setupConstraintsOnRootView(rootView: UIView, forView views: [String : AnyObject]) {
-    let mainImageConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|[mainImage]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
-    let mainImageConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:|[mainImage]|", options: nil, metrics: nil, views: views)
+    let mainImageConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[mainImage]-20-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+    let mainImageConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:|-40-[mainImage]-40-|", options: nil, metrics: nil, views: views)
     rootView.addConstraints(mainImageConstraintX)
     rootView.addConstraints(mainImageConstraintY)
     self.mainImageShrinkConstraintY = mainImageConstraintY.first as NSLayoutConstraint
