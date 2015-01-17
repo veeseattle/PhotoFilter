@@ -7,29 +7,65 @@
 //
 
 import UIKit
+import Photos
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+  var collectionView : UICollectionView!
+  var rootView = UIView(frame: UIScreen.mainScreen().bounds)
+  var delegate : ImageSelectedProtocol?
+  var photoResult : PHFetchResult!
+  var photoCollection : PHAssetCollection!
+  var imageManager = PHCachingImageManager()
+  
+  override func loadView() {
+    let rootView = UIView(frame: UIScreen.mainScreen().bounds)
+    self.collectionView = UICollectionView(frame: rootView.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+    let flowLayout = collectionView.collectionViewLayout as UICollectionViewFlowLayout
+    flowLayout.itemSize = CGSize(width: 100, height: 100)
+    rootView.addSubview(collectionView)
+    collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    collectionView.backgroundColor = UIColor.whiteColor()
+    self.view = rootView
+    
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    self.imageManager = PHCachingImageManager()
+    self.photoResult = PHAsset.fetchAssetsWithOptions(nil)
+    self.collectionView.registerClass(GalleryImageCell.self, forCellWithReuseIdentifier: "Photo_Cell")
+    self.view.backgroundColor = UIColor.whiteColor()
+    self.collectionView.dataSource = self
+    self.collectionView.delegate = self
+    
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+  //MARK: UICollectionViewDataSource
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return self.photoResult.count
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Photo_Cell", forIndexPath: indexPath) as GalleryImageCell
+    let photoAsset = self.photoResult[indexPath.row] as PHAsset
+    self.imageManager.requestImageForAsset(photoAsset, targetSize: CGSize(width: 100, height: 100), contentMode: PHImageContentMode.AspectFill, options: nil) { (requestedImage, info) -> Void in
+      cell.imageView.image = requestedImage
+      cell.imageView.contentMode = UIViewContentMode.ScaleAspectFill
     }
-    */
-
+    return cell
+  }
+  
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let photoAsset = self.photoResult[indexPath.row] as PHAsset
+    self.imageManager.requestImageForAsset(photoAsset, targetSize: CGSize(width: 100, height: 100), contentMode: PHImageContentMode.AspectFill, options: nil) { (requestedImage, info) -> Void in
+    self.delegate?.controllerDidSelectImage(requestedImage)
+    self.navigationController?.popToRootViewControllerAnimated(true)
+  }
+  }
+  
+  
+  
 }

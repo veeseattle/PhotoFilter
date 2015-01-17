@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4846571A65CFC300297CED /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4846561A65CFC300297CED /* Thumbnail.swift */; };
+		4E628FAC1A647C2A00F7ABEF /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E628FAB1A647C2A00F7ABEF /* GalleryViewController.swift */; };
+		4E784E2D1A69CFB40011F80D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E784E2F1A69CFB40011F80D /* Localizable.strings */; };
+		4E7C555B1A678374003A7A12 /* GalleryImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C555A1A678374003A7A12 /* GalleryImageCell.swift */; };
+		4EBA3F2C1A671E05001F1384 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA3F2B1A671E05001F1384 /* PhotoViewController.swift */; };
 		4EF245341A646410008D454A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF245331A646410008D454A /* AppDelegate.swift */; };
 		4EF245361A646410008D454A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF245351A646410008D454A /* ViewController.swift */; };
-		4EF245391A646410008D454A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF245371A646410008D454A /* Main.storyboard */; };
 		4EF2453B1A646410008D454A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2453A1A646410008D454A /* Images.xcassets */; };
 		4EF2453E1A646410008D454A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2453C1A646410008D454A /* LaunchScreen.xib */; };
 		4EF2454A1A646410008D454A /* PhotoFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF245491A646410008D454A /* PhotoFilterTests.swift */; };
+		4EF2455B1A646F3F008D454A /* keeshond.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF2455A1A646F3F008D454A /* keeshond.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +31,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E4846561A65CFC300297CED /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		4E628FAB1A647C2A00F7ABEF /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		4E784E2E1A69CFB40011F80D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E784E301A69CFC40011F80D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E784E321A69D0040011F80D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4E784E331A69D0050011F80D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E7C555A1A678374003A7A12 /* GalleryImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryImageCell.swift; sourceTree = "<group>"; };
+		4EBA3F2B1A671E05001F1384 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		4EF2452E1A646410008D454A /* PhotoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF245321A646410008D454A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF245331A646410008D454A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EF245351A646410008D454A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4EF245381A646410008D454A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EF2453A1A646410008D454A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4EF2453D1A646410008D454A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4EF245431A646410008D454A /* PhotoFilterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFilterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF245481A646410008D454A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF245491A646410008D454A /* PhotoFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilterTests.swift; sourceTree = "<group>"; };
+		4EF2455A1A646F3F008D454A /* keeshond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keeshond.png; path = ../../../../Downloads/keeshond.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +90,10 @@
 		4EF245301A646410008D454A /* PhotoFilter */ = {
 			isa = PBXGroup;
 			children = (
-				4EF245331A646410008D454A /* AppDelegate.swift */,
-				4EF245351A646410008D454A /* ViewController.swift */,
-				4EF245371A646410008D454A /* Main.storyboard */,
+				4EF245551A64642A008D454A /* Controller */,
+				4EF245541A646426008D454A /* View */,
+				4EF245531A646421008D454A /* Model */,
 				4EF2453A1A646410008D454A /* Images.xcassets */,
-				4EF2453C1A646410008D454A /* LaunchScreen.xib */,
 				4EF245311A646410008D454A /* Supporting Files */,
 			);
 			path = PhotoFilter;
@@ -90,6 +102,8 @@
 		4EF245311A646410008D454A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E784E2F1A69CFB40011F80D /* Localizable.strings */,
+				4EF2455A1A646F3F008D454A /* keeshond.png */,
 				4EF245321A646410008D454A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -110,6 +124,34 @@
 				4EF245481A646410008D454A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EF245531A646421008D454A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E4846561A65CFC300297CED /* Thumbnail.swift */,
+				4E7C555A1A678374003A7A12 /* GalleryImageCell.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4EF245541A646426008D454A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EF2453C1A646410008D454A /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4EF245551A64642A008D454A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4EF245331A646410008D454A /* AppDelegate.swift */,
+				4EF245351A646410008D454A /* ViewController.swift */,
+				4E628FAB1A647C2A00F7ABEF /* GalleryViewController.swift */,
+				4EBA3F2B1A671E05001F1384 /* PhotoViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +203,7 @@
 				TargetAttributes = {
 					4EF2452D1A646410008D454A = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = V7TF53Q2C8;
 					};
 					4EF245421A646410008D454A = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -175,6 +218,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 4EF245251A646410008D454A;
 			productRefGroup = 4EF2452F1A646410008D454A /* Products */;
@@ -192,9 +236,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF245391A646410008D454A /* Main.storyboard in Resources */,
 				4EF2453E1A646410008D454A /* LaunchScreen.xib in Resources */,
+				4E784E2D1A69CFB40011F80D /* Localizable.strings in Resources */,
 				4EF2453B1A646410008D454A /* Images.xcassets in Resources */,
+				4EF2455B1A646F3F008D454A /* keeshond.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +257,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E628FAC1A647C2A00F7ABEF /* GalleryViewController.swift in Sources */,
+				4E7C555B1A678374003A7A12 /* GalleryImageCell.swift in Sources */,
 				4EF245361A646410008D454A /* ViewController.swift in Sources */,
+				4E4846571A65CFC300297CED /* Thumbnail.swift in Sources */,
 				4EF245341A646410008D454A /* AppDelegate.swift in Sources */,
+				4EBA3F2C1A671E05001F1384 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,18 +285,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4EF245371A646410008D454A /* Main.storyboard */ = {
+		4E784E2F1A69CFB40011F80D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4EF245381A646410008D454A /* Base */,
+				4E784E2E1A69CFB40011F80D /* Base */,
+				4E784E301A69CFC40011F80D /* en */,
+				4E784E331A69D0050011F80D /* id */,
 			);
-			name = Main.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		4EF2453C1A646410008D454A /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4EF2453D1A646410008D454A /* Base */,
+				4E784E321A69D0040011F80D /* id */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -407,6 +459,7 @@
 				4EF2454F1A646410008D454A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EF245501A646410008D454A /* Build configuration list for PBXNativeTarget "PhotoFilterTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +468,7 @@
 				4EF245521A646410008D454A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

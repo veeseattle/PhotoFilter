@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    
+    //programmatically create a root view controller
+    //MARK: RootViewController
+    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    self.window?.makeKeyAndVisible()
+    let rootVC = ViewController()
+    
+    let navController = UINavigationController(rootViewController: rootVC)
+    //can change the color of the navigation bar here: UINavigationBar
+    //placeholder
+    self.window?.rootViewController = navController
     return true
   }
 
