@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "image5.jpg"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "moped.jpeg"
+      "filename" : "image5-1.jpg"
     },
     {
       "idiom" : "universal",

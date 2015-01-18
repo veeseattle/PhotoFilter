@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "image3.jpg"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "dock.jpeg"
+      "filename" : "image3-1.jpg"
     },
     {
       "idiom" : "universal",

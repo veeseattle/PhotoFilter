@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "image1.jpg"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "cloud.jpeg"
+      "filename" : "image1-1.jpg"
     },
     {
       "idiom" : "universal",

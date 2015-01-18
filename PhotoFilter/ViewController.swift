@@ -21,6 +21,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   var collectionViewYConstraint : NSLayoutConstraint!
   var mainImageShrinkConstraint : NSLayoutConstraint!
   var mainImageShrinkConstraintY : NSLayoutConstraint!
+  var photoButtonConstraint : NSLayoutConstraint!
   var originalThumbnail : UIImage!
   var filterNames = [String]()
   let imageQueue = NSOperationQueue()
@@ -37,14 +38,14 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
     //mainImage
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
-    let mainImageFile = UIImage(named: "street.jpeg")
+    let mainImageFile = UIImage(named: "image5.jpg")
     self.mainImage = UIImageView(image: mainImageFile!)
-    self.mainImage.contentMode = UIViewContentMode.ScaleToFill
+    self.mainImage.contentMode = UIViewContentMode.ScaleAspectFill
     self.mainImage.setTranslatesAutoresizingMaskIntoConstraints(false)
     
     //button
     self.photoButton.setTitle(NSLocalizedString("Photo", comment: "Button title"), forState: UIControlState.Normal)
-    self.photoButton.backgroundColor = UIColor.blueColor()
+    self.photoButton.backgroundColor = UIColor.blackColor()
     self.photoButton.setTranslatesAutoresizingMaskIntoConstraints(false)
     self.photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
     
@@ -119,6 +120,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       })
       self.mainImageShrinkConstraintY.constant = 150
       self.mainImageShrinkConstraint.constant = 150
+      self.photoButtonConstraint.constant = -120
       UIView.animateWithDuration(0.4, animations: { () -> Void in
         self.view.layoutIfNeeded()
       })
@@ -190,6 +192,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
       self.view.layoutIfNeeded()
     })
     self.navigationItem.rightBarButtonItem = shareButton
+    self.photoButtonConstraint.constant = 70
     
   }
     
@@ -245,8 +248,7 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
         cell.imageView.image = thumbnail.filteredImage!
         cell.backgroundColor = UIColor.whiteColor()
         cell.imageView.layer.cornerRadius = 50.0
-        cell.imageView.layer.masksToBounds = true
-        cell.opaque = false
+        cell.imageView.contentMode = UIViewContentMode.ScaleAspectFill
       }}
     return cell
     }
@@ -313,19 +315,20 @@ class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewD
   
   //MARK: Layout Constraints
   func setupConstraintsOnRootView(rootView: UIView, forView views: [String : AnyObject]) {
-    let mainImageConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[mainImage]-20-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
-    let mainImageConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:|-40-[mainImage]-40-|", options: nil, metrics: nil, views: views)
+    let mainImageConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|[mainImage]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+    let mainImageConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:|[mainImage]|", options: nil, metrics: nil, views: views)
     rootView.addConstraints(mainImageConstraintX)
     rootView.addConstraints(mainImageConstraintY)
     self.mainImageShrinkConstraintY = mainImageConstraintY.first as NSLayoutConstraint
     self.mainImageShrinkConstraint = mainImageConstraintY[1] as NSLayoutConstraint
     
     
-    let photoButtonConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-200-|", options: nil, metrics: nil, views: views)
+    let photoButtonConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-70-|", options: nil, metrics: nil, views: views)
     let photoButton = views["photoButton"] as UIView!
     let photoButtonConstraintX = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: .Equal, toItem: rootView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
     rootView.addConstraint(photoButtonConstraintX)
     rootView.addConstraints(photoButtonConstraintY)
+    self.photoButtonConstraint = photoButtonConstraintY.first as NSLayoutConstraint
     photoButton.setContentHuggingPriority(750, forAxis: UILayoutConstraintAxis.Vertical)
     
     let collectionViewConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: nil, metrics: nil, views: views)
